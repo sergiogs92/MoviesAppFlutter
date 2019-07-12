@@ -1,4 +1,5 @@
 import 'package:movies_app/src/core/domains/MovieDomain.dart';
+import 'package:movies_app/src/feats/movies/moviedetail/MovieDetailWidget.dart';
 import 'package:movies_app/src/support/StringLocalization.dart';
 import 'package:flutter/material.dart';
 
@@ -42,10 +43,18 @@ class MovieListWidget extends StatelessWidget {
               child: Image.network(
                 snapshot.data.movies[index].url,
                 fit: BoxFit.fill,
-              )
-            ),
+              ),
+                onTap: () => openDetailPage(context, snapshot.data, index),
+          ),
           );
         });
   }
 
+  openDetailPage(BuildContext context, DataMovie data, int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => MovieDetailWidget(movie: data.movies[index])),
+    );
+  }
 }
