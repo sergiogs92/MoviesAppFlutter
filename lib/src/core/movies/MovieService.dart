@@ -1,20 +1,21 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:movies_app/src/core/deps/net/MovieNetClient.dart';
+import 'package:movies_app/src/core/deps/net/NetDartClient.dart';
+import 'package:movies_app/src/core/deps/net/NetRequest.dart';
 import 'package:movies_app/src/core/domains/MovieDomain.dart';
 import 'package:movies_app/src/core/movies/NetDomain.dart';
 import 'package:movies_app/src/feats/movies/MovieInteractor.dart';
 
 class MovieService {
-  MovieNetClient _netClient;
+  NetDartClient _netClient;
 
-  MovieService(MovieNetClient client) {
+  MovieService(NetDartClient client) {
     _netClient = client;
   }
 
   Future<DataMovie> getMovieList() async {
     try {
-      final response = await _netClient.netRequest(Request(Methods.GET, Map(), "", null));
+      final response = await _netClient.netRequest(NetRequest(Methods.GET, Map(), "", null));
       return DataMovie.fromNetMovies(NetMovie.fromJson(response).results);
     } on SocketException catch (_) {
       throw _handleException(NetClientException(-1));

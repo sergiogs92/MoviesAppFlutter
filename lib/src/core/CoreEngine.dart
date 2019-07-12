@@ -1,6 +1,6 @@
 import 'package:movies_app/src/support/EnvConstants.dart';
 
-import 'deps/net/MovieNetClient.dart';
+import 'deps/net/NetDartClient.dart';
 import 'movies/MovieEngine.dart';
 import 'movies/MovieService.dart';
 
@@ -11,12 +11,12 @@ class CoreEngine {
 
   static CoreEngine getInstance() => _singleton;
 
-  MovieNetClient _client;
+  NetDartClient _client;
   MovieEngine _movies;
 
 
   void initialize() {
-    _client = MovieNetClient(EnvConstants.BASE_URL);
+    _client = NetDartClient(EnvConstants.BASE_URL);
     _movies = MovieEngine(MovieService(_client));
   }
 

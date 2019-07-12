@@ -1,16 +1,17 @@
 import 'dart:convert';
 
-import 'package:movies_app/src/core/deps/net/NetClient.dart';
 import 'package:http/http.dart';
+import 'package:movies_app/src/core/deps/net/NetClient.dart';
+import 'package:movies_app/src/core/deps/net/NetRequest.dart';
 
-class MovieNetClient implements NetClient {
+class NetDartClient implements NetClient {
   String _baseUrl;
 
-  MovieNetClient(String baseUrl) {
+  NetDartClient(String baseUrl) {
     this._baseUrl = baseUrl;
   }
 
-  Future netRequest(Request request) async {
+  Future netRequest(NetRequest request) async {
     switch (request.method) {
       case Methods.GET:
         final response = await get(_baseUrl + request.url);
@@ -31,29 +32,5 @@ class MovieNetClient implements NetClient {
         ? json.decode(response.body)
         : throw NetClientException(response.statusCode);
   }
-}
 
-class Request {
-  Methods method;
-  Map<String, String> headers;
-  String url;
-  Body body;
-
-  Request(this.method, this.headers, this.url, this.body);
-}
-
-enum Methods { GET, POST }
-
-class Body {
-  Map<String, String> headers;
-  Object body;
-  String encoding;
-}
-
-class NetClientException implements Exception {
-  int _statusCode;
-
-  NetClientException(this._statusCode);
-
-  int get statusCode => _statusCode;
 }

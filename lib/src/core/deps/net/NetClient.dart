@@ -1,7 +1,8 @@
-import 'package:movies_app/src/core/deps/net/MovieNetClient.dart';
+
+import 'package:movies_app/src/core/deps/net/NetRequest.dart';
 
 abstract class NetClient {
 
-  Future netRequest(Request request);
+  Future netRequest(NetRequest request);
 
 }
