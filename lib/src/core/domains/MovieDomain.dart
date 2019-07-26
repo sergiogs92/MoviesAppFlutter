@@ -26,4 +26,8 @@ class Movie {
   String description;
 
   Movie(this.id, this.url, this.title, this.description);
+
+
+  Movie.movieInfo({this.id, this.url, this.title, this.description});
+
 }

@@ -32,8 +32,12 @@ class MovieListController implements MovieListViewListener {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) =>
-              MovieDetailPage(MovieDetailController(movie: movie))),
+          builder: (context) => MovieDetailPage(MovieDetailController(
+              movie: Movie.movieInfo(
+                  id: movie.id,
+                  url: movie.url,
+                  title: movie.title,
+                  description: movie.description)))),
     );
   }
 }

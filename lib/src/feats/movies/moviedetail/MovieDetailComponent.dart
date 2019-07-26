@@ -14,14 +14,19 @@ class MovieDetailPage extends StatefulWidget {
   State<StatefulWidget> createState() => MovieDetailPageState();
 }
 
-class MovieDetailPageState extends State<MovieDetailPage>
-    implements MovieDetailView {
+class MovieDetailPageState extends State<MovieDetailPage> implements MovieDetailView {
   Movie _movie;
+
+  @override
+  void initState() {
+    super.initState();
+    this.widget.controller.movieDetailView = this;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: new NestedScrollView(
+        body: NestedScrollView(
       headerSliverBuilder: buildHeadersSlivers(),
       body: buildDescription(),
     ));
@@ -46,7 +51,7 @@ class MovieDetailPageState extends State<MovieDetailPage>
   }
 
   Widget buildDescription() {
-    return Row(
+    return ListView(
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(10.0),

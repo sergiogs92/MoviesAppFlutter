@@ -60,7 +60,7 @@ class MovieListPageState extends State<MovieListPage> implements MovieListView {
     }
     return Center(
         child: CircularProgressIndicator(
-            valueColor: new AlwaysStoppedAnimation<Color>(Colors.black)));
+            valueColor: new AlwaysStoppedAnimation<Color>(Colors.white)));
   }
 
   Widget buildItem(Movie movie, int index, bool isPortrait) {
