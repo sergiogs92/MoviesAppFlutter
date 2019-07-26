@@ -4,7 +4,7 @@ import 'package:movies_app/src/core/deps/net/NetDartClient.dart';
 import 'package:movies_app/src/core/deps/net/NetRequest.dart';
 import 'package:movies_app/src/core/domains/MovieDomain.dart';
 import 'package:movies_app/src/core/movies/NetDomain.dart';
-import 'package:movies_app/src/feats/movies/MovieInteractor.dart';
+import 'package:movies_app/src/feats/movies/MovieListInteractor.dart';
 
 class MovieService {
   NetDartClient _netClient;
@@ -24,16 +24,16 @@ class MovieService {
     }
   }
 
-  MovieException _handleException(NetClientException e) {
+  MovieListException _handleException(NetClientException e) {
     switch (e.statusCode) {
       case -1:
-        return MovieException(MovieError.BAD_CONNECTION);
+        return MovieListException(MovieListError.BAD_CONNECTION);
         break;
       case 500:
-        return MovieException(MovieError.SERVER_ERROR);
+        return MovieListException(MovieListError.SERVER_ERROR);
         break;
       default:
-        return MovieException(MovieError.UNKNOWN);
+        return MovieListException(MovieListError.UNKNOWN);
     }
   }
 
