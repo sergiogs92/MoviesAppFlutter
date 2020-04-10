@@ -1,4 +1,4 @@
-package com.sgsaez.movies_app;
+package com.sgsaez.flutterdemo;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
