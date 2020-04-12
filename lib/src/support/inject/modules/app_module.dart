@@ -1,3 +1,4 @@
+import 'package:core/core/movies/movies.dart';
 import "package:core/core_engine.dart";
 import 'package:core/support/lazy.dart';
 import 'package:movies_app/src/support/EnvConstants.dart';
@@ -12,7 +13,9 @@ class AppModule {
     _coreModule = Lazy(() => CoreEngine(_deps));
   }
 
-  CoreEngine get coreModule => _coreModule();
-
   CoreDeps get _deps => _coreDeps();
+
+  CoreEngine get _core => _coreModule();
+
+  Movies get movies => _core.movies;
 }

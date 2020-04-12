@@ -1,17 +1,18 @@
+import 'package:core/internal/support/net/processors/processor_builder.dart';
 
-class NetMovie {
-  List<NetDataMovie> _movies = [];
+class NetMovie implements Deserializer<NetMovie> {
+  List<NetDataMovie> movies;
 
-  NetMovie.fromJson(Map<String, dynamic> jsonMap) {
-    List<NetDataMovie> temp = [];
-    for (int i = 0; i < jsonMap['results'].length; i++) {
-      NetDataMovie result = NetDataMovie(jsonMap['results'][i]);
-      temp.add(result);
+  NetMovie({this.movies});
+
+  @override
+  NetMovie fromJson(Map<String, dynamic> json) {
+    for (int i = 0; i < json['results'].length; i++) {
+      NetDataMovie result = NetDataMovie(json['results'][i]);
+      movies.add(result);
     }
-    _movies = temp;
+    return this;
   }
-
-  List<NetDataMovie> get results => _movies;
 }
 
 class NetDataMovie {

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/src/core/domains/MovieDomain.dart';
+import 'package:movies_app/src/core/domains/movie_domain.dart';
 
 import 'MovieDetailController.dart';
 import 'MovieDetailView.dart';

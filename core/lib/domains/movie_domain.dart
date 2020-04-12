@@ -1,4 +1,4 @@
-import 'package:movies_app/src/core/movies/NetDomain.dart';
+import 'package:core/core/movies/net_domain.dart';
 
 class DataMovie {
   List<Movie> _movies = [];
