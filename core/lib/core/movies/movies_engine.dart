@@ -14,6 +14,5 @@ class MovieEngine implements Movies {
   }
 
   @override
-  Future<Result<DataMovie, MoviesException>> getMovies() =>
-      _service.getMovieList();
+  Future<Result<List<Movie>, MoviesException>> getMovies() => _service.getMovies();
 }

@@ -1,8 +1,8 @@
-import 'package:movies_app/src/support/EnvConstants.dart';
 import 'package:flutter/material.dart';
-import 'src/app.dart';
+import 'package:movies_app/support/env_constants.dart';
+import 'package:movies_app/support/ui/material_app_view.dart';
 
 void main() {
   EnvConstants.setEnvironment(Environment.DEV);
-  runApp(App());
+  runApp(MaterialAppView());
 }

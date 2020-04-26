@@ -5,7 +5,7 @@ import 'package:core/dep/net/net_client.dart';
 extension NetResponseFormatted on NetResponse {
   T toResponseFormatted<T extends Deserializer>(T value) {
     try {
-      final map = jsonDecode(body.map(_toGetBytes).value)["data"];
+      final map = jsonDecode(body.map(_toGetBytes).value);
       return value.fromJson(map);
     } catch (error) {
       throw error;

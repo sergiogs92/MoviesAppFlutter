@@ -1,33 +1,31 @@
 import 'package:core/core/movies/net_domain.dart';
 
-class DataMovie {
-  List<Movie> _movies = [];
+class MovieList {
+  final List<Movie> movies;
 
-  DataMovie.fromNetMovies(List<NetDataMovie> netMovies) {
-    List<Movie> temp = [];
+  MovieList({this.movies});
+
+  factory MovieList.fromNetMovies(List<NetDataMovie> netMovies) {
+    List<Movie> movieList = [];
     for (int i = 0; i < netMovies.length; i++) {
-      Movie result = Movie(
-          netMovies[i].identifier,
+      Movie movie = Movie(
+          netMovies[i].id,
           "https://image.tmdb.org/t/p/w185" + netMovies[i].posterPath,
           netMovies[i].originalTitle,
-          netMovies[i].description);
-      temp.add(result);
+          netMovies[i].overview);
+      movieList.add(movie);
     }
-    _movies = temp;
+    return MovieList(movies: movieList);
   }
 
-  List<Movie> get movies => _movies;
 }
 
 class Movie {
-  int id;
-  String url;
-  String title;
-  String description;
+  final int id;
+  final String url;
+  final String title;
+  final String description;
 
   Movie(this.id, this.url, this.title, this.description);
-
-
-  Movie.movieInfo({this.id, this.url, this.title, this.description});
 
 }

@@ -1,8 +1,8 @@
 import 'package:core/core/movies/movies.dart';
 import "package:core/core_engine.dart";
 import 'package:core/support/lazy.dart';
-import 'package:movies_app/src/support/EnvConstants.dart';
-import 'package:movies_app/src/support/dep/net/net_client.dart';
+import 'package:movies_app/support/env_constants.dart';
+import 'package:movies_app/support/dep/net/net_client.dart';
 
 class AppModule {
   Lazy<CoreEngine> _coreModule;

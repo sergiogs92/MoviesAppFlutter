@@ -2,7 +2,7 @@ import 'package:core/dep/result.dart';
 import 'package:core/domains/movie_domain.dart';
 
 abstract class Movies {
-  Future<Result<DataMovie, MoviesException>> getMovies();
+  Future<Result<List<Movie>, MoviesException>> getMovies();
 }
 
 class MoviesException implements Exception {

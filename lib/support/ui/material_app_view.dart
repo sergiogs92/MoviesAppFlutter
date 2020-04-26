@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:movies_app/src/support/StringLocalization.dart';
+import 'package:movies_app/feats/movies/movies_sreen.dart';
+import 'package:movies_app/support/string_localization.dart';
 
-import 'feats/movies/MovieListComponent.dart';
-import 'feats/movies/MovieListController.dart';
-
-class App extends StatelessWidget {
+class MaterialAppView extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext contextP) {
     return MaterialApp(
         onGenerateTitle: (BuildContext context) =>
-            StringLocalization.of(context).title,
+        StringLocalization.of(context).title,
         localizationsDelegates: [
           const StringLocalizationDelegate(),
           GlobalMaterialLocalizations.delegate,
@@ -21,6 +19,7 @@ class App extends StatelessWidget {
           const Locale('es', ''),
         ],
         theme: ThemeData.dark(),
-        home: MovieListPage(MovieListController()));
+        debugShowCheckedModeBanner: false,
+        home: MoviesScreen());
   }
 }

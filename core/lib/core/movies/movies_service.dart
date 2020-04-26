@@ -14,7 +14,7 @@ class MovieService {
     _netClient = client;
   }
 
-  Future<Result<DataMovie, MoviesException>> getMovieList() async {
+  Future<Result<List<Movie>, MoviesException>> getMovies() async {
     return await _netClient
         .request(NetRequest(method: NetRequestMethod.get, url: ""))
         .then((response) => response.fold((NetResponse response) {
@@ -24,12 +24,13 @@ class MovieService {
             }));
   }
 
-  DataMovie _toGetMovies(NetResponse response) {
-    final netMovies = response.toResponseFormatted<NetMovie>(NetMovie());
-    return DataMovie.fromNetMovies(netMovies.movies);
+  List<Movie> _toGetMovies(NetResponse response) {
+    final netMovies = response.toResponseFormatted<NetMovieList>(NetMovieList());
+    return MovieList.fromNetMovies(netMovies.movies).movies;
   }
 
   MoviesException _toGetMoviesError(NetError error){
+    print(error);
     switch (error.code) {
       case NetErrorCode.connectionError:
         return MoviesException(MoviesError.BAD_CONNECTION);
